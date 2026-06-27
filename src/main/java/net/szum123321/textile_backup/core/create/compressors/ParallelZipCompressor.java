@@ -86,7 +86,7 @@ public class ParallelZipCompressor extends ZipCompressor {
 
 		entry.setTime(System.currentTimeMillis());
 
-		scatterZipCreator.addArchiveEntry(entry, input);
+		scatterZipCreator.addArchiveEntry(entry, input::get);
 	}
 
 	@Override

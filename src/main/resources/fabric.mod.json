@@ -3,8 +3,8 @@
   "id": "textile_backup",
   "version": "${version}",
 
-  "name": "Textile Backup",
-  "description": "Configurable, fully server-sided backup mod for Fabric",
+  "name": "Textile Backup Fork",
+  "description": "Unofficial Textile Backup fork updated for Minecraft Fabric 1.21.11",
   "authors": [
     "Szum123321"
   ],
@@ -15,12 +15,6 @@
     "66Leo66",
     "IzzyBizzy45"
   ],
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/textile-backup",
-    "issues": "https://github.com/Szum123321/textile_backup/issues",
-    "sources": "https://github.com/Szum123321/textile_backup"
-  },
-
   "license": "GPLv3",
   "icon": "assets/textile_backup/textile_backup.png",
 
@@ -38,20 +32,14 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.15.11",
-    "fabric": "*",
-    "minecraft": "^1.21",
+    "fabricloader": ">=0.19.3",
+    "fabric-command-api-v2": "*",
+    "fabric-lifecycle-events-v1": "*",
+    "minecraft": "1.21.11",
     "cloth-config2": "*",
     "java": ">=21"
   },
   "recommends": {
     "modmenu": "*"
-  },
-
-  "custom": {
-    "modupdater": {
-      "strategy": "curseforge",
-      "projectID": 359893
-    }
   }
 }

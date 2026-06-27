@@ -1,5 +1,5 @@
 {
-  "text.autoconfig.textile_backup.title": "Textile Backup Configuration",
+  "text.autoconfig.textile_backup.title": "Textile Backup Fork Configuration",
 
   "text.autoconfig.textile_backup.category.default": "General",
   "text.autoconfig.textile_backup.category.Create": "Backup settings",

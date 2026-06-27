@@ -8,3 +8,5 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+rootProject.name = 'textile_backup-fork'

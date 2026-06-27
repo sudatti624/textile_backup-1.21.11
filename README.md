@@ -1,35 +1,70 @@
-# Textile Backup
-[![Curseforge](http://cf.way2muchnoise.eu/full_359893_downloads.svg) ![Available for](http://cf.way2muchnoise.eu/versions/359893.svg)](https://www.curseforge.com/minecraft/mc-mods/textile-backup)  
-[![Modrinth](https://modrinth-utils.vercel.app/api/badge/downloads?id=wwcspvkr&logo=true)](https://modrinth.com/mod/textile_backup)  
-[![Github](https://img.shields.io/github/stars/Szum123321/textile_backup?style=social) ![Github](https://img.shields.io/github/v/release/Szum123321/textile_backup?style=plastic)](https://github.com/Szum123321/textile_backup)
+# Textile Backup Fork
 
-## What is it?
-Textile Backup provides a way to automatically make a backup of your world, zip it and even bring it back later, replacing your old world, all without leaving the game. 
+このリポジトリは、[Textile Backup](https://github.com/Szum123321/textile_backup) を Minecraft Fabric 1.21.11 向けに更新した非公式 Fork です。
 
-------------
-### List of features
-- Multithreaded compression: backups are made much faster than with other mods.
-- Multiple compression formats: performance can be tuned to your preference
-- It's super easy to bring back an old version of your world (Requires server restart)
-- Built-in management features: you can whitelist/blacklist players' access to txb commands
-- Automatic deletion of old files (Age-, Number- and Size- based)
-- Highly configurable: [Wiki](https://github.com/Szum123321/textile_backup/wiki/Configuration)
-- Fully server-sided: all features are available even if it's only present on the server
+元プロジェクトの作者および配布元による公式リリースではありません。問題報告や問い合わせは、元プロジェクトではなくこの Fork の管理者へ行ってください。
 
-### [**Installation Guide**](https://github.com/Szum123321/textile_backup/wiki/Installation)  
-### [**Usage Guide**](https://github.com/Szum123321/textile_backup/wiki/Usage)
+既存の設定やワールドとの互換性を保つため、mod id は upstream と同じ `textile_backup` を維持しています。一方で、表示名とビルド成果物名は upstream 版と区別しやすいように `Textile Backup Fork` / `textile_backup-fork` にしています。
 
+mod id が同じため、upstream 版 Textile Backup との同時導入は想定していません。
 
-------------
+## 注意事項
 
+本リポジトリはAIを使用しています。
+ご使用の際は自己責任でお願いします。
 
-This mod requires both the Fabric API and Cloth Config to run.
+本番サーバーで使用する前に、必ずテスト環境でバックアップ作成と復元を確認してください。
 
-Feel free to use this mod in your modpack or on a server!
+## 対応環境
 
-------------
+- Minecraft: 1.21.11
+- Mod loader: Fabric Loader 0.19.3 以上
+- Java: 21 以上
+- 必須mod: Fabric API、Cloth Config
+- 任意連携: Mod Menu
 
-### Contact:
+## ビルド方法
 
-If you need any help then you can join the [Discord](https://discord.gg/ktasEy4) server  
-In case of an issue please report it [HERE](https://github.com/Szum123321/textile_backup/issues)
+```powershell
+.\gradlew.bat build
+```
+
+Remap 済みの mod jar は `build/libs/` に出力されます。ファイル名は次の形式です。
+
+```text
+textile_backup-fork-3.1.3-fork+mc1.21.11.jar
+```
+
+## 機能
+
+Textile Backup は、サーバー側でワールドバックアップを作成する Fabric mod です。圧縮バックアップの自動作成、古いバックアップの整理、サーバー再起動後のバックアップ復元などを行えます。
+
+upstream から引き継いでいる主な機能:
+
+- マルチスレッド圧縮
+- 複数のアーカイブ/圧縮形式
+- スケジュールによる自動バックアップ
+- 古いワールドの復元ワークフロー
+- 日数、個数、サイズによるバックアップ整理
+- バックアップコマンド用のプレイヤー whitelist / blacklist
+- サーバー側のみで動作
+
+## Fork での主な変更
+
+この Fork は、Minecraft Fabric 1.21.11 でビルドおよび実行できる状態を維持することを主な目的としています。
+
+- Minecraft、Yarn、Fabric Loader、Loom、Gradle を更新
+- 実際に使用している Fabric API モジュールに合わせて依存関係を調整
+- Minecraft 1.21.11 の permission API に合わせてコマンド権限チェックを更新
+- Fork と分かるように表示名とビルド成果物名を変更
+- 圧縮系ライブラリを配布 jar に同梱するように調整
+
+## ライセンスと帰属
+
+元プロジェクト: [Szum123321/textile_backup](https://github.com/Szum123321/textile_backup)
+
+元プロジェクトのライセンス: GPLv3
+
+本 Fork も元プロジェクトのライセンスに従い、GPLv3 のもとで扱われます。ライセンス全文は [LICENSE](LICENSE) を参照してください。
+
+このプロジェクトには、同梱ライブラリおよび一部参考実装があります。詳細は [Copyright_Notice](Copyright_Notice) を参照してください。

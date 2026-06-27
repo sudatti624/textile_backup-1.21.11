@@ -18,15 +18,15 @@
 
 package net.szum123321.textile_backup.core.create;
 
-import org.apache.commons.compress.parallel.InputStreamSupplier;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.Optional;
 
-public interface InputSupplier extends InputStreamSupplier {
+public interface InputSupplier {
     InputStream getInputStream() throws IOException;
+    InputStream get();
+
     //If an entry is virtual (a.k.a. there is no actual file to open, only input stream)
     Optional<Path> getPath();
     String getName();

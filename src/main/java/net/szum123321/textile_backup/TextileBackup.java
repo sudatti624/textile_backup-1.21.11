@@ -27,6 +27,8 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.command.permission.Permission;
+import net.minecraft.command.permission.PermissionLevel;
 import net.minecraft.server.command.ServerCommandSource;
 import net.szum123321.textile_backup.commands.create.CleanupCommand;
 import net.szum123321.textile_backup.commands.create.StartBackupCommand;
@@ -43,7 +45,7 @@ import net.szum123321.textile_backup.core.create.BackupScheduler;
 import net.szum123321.textile_backup.core.create.ExecutableBackup;
 
 public class TextileBackup implements ModInitializer {
-    public static final String MOD_NAME = "Textile Backup";
+    public static final String MOD_NAME = "Textile Backup Fork";
     public static final String MOD_ID = "textile_backup";
 
     private final static TextileLogger log = new TextileLogger(MOD_NAME);
@@ -57,7 +59,7 @@ public class TextileBackup implements ModInitializer {
                         FabricLoader.getInstance().getModContainer("minecraft").orElseThrow().getMetadata().getVersion().getFriendlyString()
         );
 
-        log.info("Starting Textile Backup {} by Szum123321", Globals.INSTANCE.getCombinedVersionString());
+        log.info("Starting Textile Backup Fork {} based on Textile Backup by Szum123321", Globals.INSTANCE.getCombinedVersionString());
 
         ConfigHelper.updateInstance(AutoConfig.register(ConfigPOJO.class, JanksonConfigSerializer::new));
 
@@ -92,7 +94,7 @@ public class TextileBackup implements ModInitializer {
                         .requires((ctx) -> {
                                     try {
                                         return ((config.get().playerWhitelist.contains(ctx.getEntityOrThrow().getNameForScoreboard()) ||
-                                                ctx.hasPermissionLevel(config.get().permissionLevel)) &&
+                                                ctx.getPermissions().hasPermission(new Permission.Level(PermissionLevel.fromLevel(config.get().permissionLevel)))) &&
                                                 !config.get().playerBlacklist.contains(ctx.getEntityOrThrow().getNameForScoreboard())) ||
                                                 (ctx.getServer().isSingleplayer() &&
                                                         config.get().alwaysSingleplayerAllowed);
